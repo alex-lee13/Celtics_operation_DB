@@ -1,7 +1,7 @@
-#CREATE DATABASE celticsDB;
+CREATE DATABASE celticsDB;
 
 
-use celticsDB;
+USE celticsDB;
 
 
 CREATE TABLE IF NOT EXISTS Players
@@ -254,11 +254,14 @@ INSERT INTO PlayerAtGames VALUES(7, 'Jaylen', 'Brown', 01234, 5, 12, 13, 31, 4);
 INSERT INTO ScoutingReports VALUES(01234, 6, 8, 'celtics up', 'pick and roll', 'backdoor');
 INSERT INTO ScoutingReports VALUES(02318, 7, 6, 'celtics up', 'pick and roll', 'backdoor');
 
+INSERT INTO Broadcasters values (1, 'Telemundo', 'USA', 'English');
+INSERT INTO Broadcasters values (2, 'ESPN', 'USA', 'English');
+
 INSERT INTO AiredGames values (1, 01234, 500000, 12345678.99);
 INSERT INTO AiredGames values (2, 01234, 250000, 1234567.89);
 
-INSERT INTO Broadcasters values (1, 'Telemundo', 'USA', 'English');
-INSERT INTO Broadcasters values (2, 'ESPN', 'USA', 'English');
+INSERT INTO Practices VALUES (1, '2023-04-06', 2, 'Boston');
+INSERT INTO Practices VALUES (2, '2023-04-07', 2.5, 'Brookline');
 
 INSERT INTO PracticePlan values (1, False, 'Shooting', 'Shooting Machine');
 INSERT INTO PracticePlan values (2, True, 'Defense', 'Cones');
@@ -266,5 +269,20 @@ INSERT INTO PracticePlan values (2, True, 'Defense', 'Cones');
 INSERT INTO PlayerContracts values (0, 'Jayson', 'Tatum', 1, 100000, 4.5, 0, 'All Star','First Team');
 INSERT INTO PlayerContracts values (7, 'Jaylen', 'Brown', 2, 90000, 4, 0, 'All Star', 'Second Team');
 
-SELECT * FROM PlayerAtGames;
+INSERT INTO Player_at_practice VALUES (0, 'Jayson', 'Tatum', 1, True);
+INSERT INTO Player_at_practice VALUES (7, 'Jaylen', 'Brown', 1, True);
 
+
+SELECT * FROM Players;
+SELECT * FROM PlayerContracts;
+SELECT * FROM Coaches;
+SELECT * FROM Sponsorships;
+SELECT * FROM Practices;
+SELECT * FROM PracticePlan;
+SELECT * FROM Player_at_practice;
+SELECT * FROM Stadium;
+SELECT * FROM Games;
+SELECT * FROM ScoutingReports;
+SELECT * FROM Broadcasters;
+SELECT * FROM AiredGames;
+SELECT * FROM PlayerAtGames;
