@@ -263,5 +263,8 @@ INSERT INTO Broadcasters values (2, 'ESPN', 'USA', 'English');
 INSERT INTO PracticePlan values (1, False, 'Shooting', 'Shooting Machine');
 INSERT INTO PracticePlan values (2, True, 'Defense', 'Cones');
 
+INSERT INTO PlayerContracts values (0, 'Jayson', 'Tatum', 1, 100000, 4.5, 0, 'All Star','First Team');
+INSERT INTO PlayerContracts values (7, 'Jaylen', 'Brown', 2, 90000, 4, 0, 'All Star', 'Second Team');
+
 SELECT * FROM PlayerAtGames;
 
