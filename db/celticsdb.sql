@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS PlayerContracts
    incentive_1 varchar(100),
    incentive_2 varchar(100),
    PRIMARY KEY (p_number, fName, lName, contractID),
-   FOREIGN KEY (p_number, fName, lName) REFERENCES Players (p_number, fName, lName)
+   FOREIGN KEY (p_number, fName, lName) REFERENCES Players (p_number, fName, lName) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS CoachContracts
    incentive_1 varchar(100),
    incentive_2 varchar(100),
    PRIMARY KEY (fName, lName, title, contractID),
-   FOREIGN KEY (fName, lName, title) REFERENCES Coaches (fName, lName, title)
+   FOREIGN KEY (fName, lName, title) REFERENCES Coaches (fName, lName, title) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS Sponsorships
    brand    VARCHAR(50),
    PRIMARY KEY (p_number, fName, lName),
    FOREIGN KEY (p_number, fName, lName)
-       REFERENCES Players (p_number, fName, lName)
+       REFERENCES Players (p_number, fName, lName) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS PracticePlan
    equipment    VARCHAR(50),
    PRIMARY KEY (practice_num),
    FOREIGN KEY (practice_num)
-       REFERENCES Practices (practice_num)
+       REFERENCES Practices (practice_num) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -121,8 +121,8 @@ CREATE TABLE IF NOT EXISTS Player_at_practice
    practice_num INT,
    attendance boolean NOT NULL,
    PRIMARY KEY (p_number, fName, lName, practice_num),
-   FOREIGN KEY (practice_num) REFERENCES Practices (practice_num),
-   FOREIGN KEY (p_number, fName, lName) REFERENCES Players (p_number, fName, lName)
+   FOREIGN KEY (practice_num) REFERENCES Practices (practice_num) ON UPDATE CASCADE ON DELETE CASCADE,
+   FOREIGN KEY (p_number, fName, lName) REFERENCES Players (p_number, fName, lName) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS Games
   avg_tix_price FLOAT NOT NULL,
   location VARCHAR(50) NOT NULL,
   s_name VARCHAR(50) NOT NULL,
-  FOREIGN KEY (location, s_name) REFERENCES Stadium (location, s_name)
+  FOREIGN KEY (location, s_name) REFERENCES Stadium (location, s_name) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 
@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS ScoutingReports
    play_1 varchar(100),
    play_2 varchar(100),
    play_3 varchar(100),
-   FOREIGN KEY (gameID) REFERENCES Games (gameID)
+   FOREIGN KEY (gameID) REFERENCES Games (gameID) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -184,9 +184,9 @@ CREATE TABLE IF NOT EXISTS AiredGames
 
   PRIMARY KEY(broad_id, gameID),
   CONSTRAINT broad_id
-      FOREIGN KEY (broad_id) REFERENCES Broadcasters (broad_id),
+      FOREIGN KEY (broad_id) REFERENCES Broadcasters (broad_id) ON UPDATE CASCADE ON DELETE RESTRICT,
   CONSTRAINT gameID
-      FOREIGN KEY (gameID) REFERENCES Games (gameID)
+      FOREIGN KEY (gameID) REFERENCES Games (gameID) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -205,9 +205,9 @@ CREATE TABLE IF NOT EXISTS PlayerAtGames
   game_stls INT NOT NULL,
   PRIMARY KEY(p_number, fname, lname, gameID),
   CONSTRAINT game_ID
-      FOREIGN KEY (gameID) REFERENCES Games (gameID),
+      FOREIGN KEY (gameID) REFERENCES Games (gameID) ON UPDATE CASCADE ON DELETE CASCADE,
   CONSTRAINT player_id
-      FOREIGN KEY (p_number, fname, lname) REFERENCES Players (p_number, fname, lname)
+      FOREIGN KEY (p_number, fname, lname) REFERENCES Players (p_number, fname, lname) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -221,8 +221,8 @@ CREATE TABLE IF NOT EXISTS PlayerCoaches
  p_lName varchar(50) NOT NULL,
  p_notes varchar(100),
  PRIMARY KEY (coach_fName, coach_lName, title, p_number, p_fName, p_lName),
- FOREIGN KEY (coach_fName, coach_lName, title) REFERENCES Coaches (fName, lName, title),
- FOREIGN KEY (p_number, p_fName, p_lName) REFERENCES Players (p_number, fName, lName)
+ FOREIGN KEY (coach_fName, coach_lName, title) REFERENCES Coaches (fName, lName, title) ON UPDATE CASCADE ON DELETE CASCADE,
+ FOREIGN KEY (p_number, p_fName, p_lName) REFERENCES Players (p_number, fName, lName) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO Players values (0, 'Jayson', 'Tatum', 'Healthy', 80, 220, '1995-10-20', 0, 0, 0, 0, 0, 0, 'jt@gmail.com');
