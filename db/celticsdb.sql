@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS Players
    tot_mins   INTEGER     NOT NULL DEFAULT 0,
    tot_asts   INTEGER     NOT NULL DEFAULT 0,
    email      varchar(50) UNIQUE,
-   PRIMARY KEY (p_number, fName, lName)
+   PRIMARY KEY (p_number)
 );
 
 
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS Player_at_practice
    lName        VARCHAR(50) NOT NULL,
    practice_num INT,
    attendance boolean NOT NULL,
-   PRIMARY KEY (p_number, fName, lName, practice_num),
+   PRIMARY KEY (p_number, practice_num),
    FOREIGN KEY (practice_num) REFERENCES Practices (practice_num) ON UPDATE CASCADE ON DELETE CASCADE,
    FOREIGN KEY (p_number, fName, lName) REFERENCES Players (p_number, fName, lName) ON UPDATE CASCADE ON DELETE CASCADE
 );
@@ -203,7 +203,7 @@ CREATE TABLE IF NOT EXISTS PlayerAtGames
   game_rebs INT NOT NULL,
   game_mins FLOAT NOT NULL,
   game_stls INT NOT NULL,
-  PRIMARY KEY(p_number, fname, lname, gameID),
+  PRIMARY KEY(p_number, gameID),
   CONSTRAINT game_ID
       FOREIGN KEY (gameID) REFERENCES Games (gameID) ON UPDATE CASCADE ON DELETE CASCADE,
   CONSTRAINT player_id
@@ -220,7 +220,7 @@ CREATE TABLE IF NOT EXISTS PlayerCoaches
  p_fName varchar(50) NOT NULL,
  p_lName varchar(50) NOT NULL,
  p_notes varchar(100),
- PRIMARY KEY (coach_fName, coach_lName, title, p_number, p_fName, p_lName),
+ PRIMARY KEY (coach_fName, coach_lName, title, p_number),
  FOREIGN KEY (coach_fName, coach_lName, title) REFERENCES Coaches (fName, lName, title) ON UPDATE CASCADE ON DELETE CASCADE,
  FOREIGN KEY (p_number, p_fName, p_lName) REFERENCES Players (p_number, fName, lName) ON UPDATE CASCADE ON DELETE CASCADE
 );
