@@ -268,4 +268,25 @@ INSERT INTO Games(gameID,game_date,opponent,num_tix,avg_tix_price,s_name) VALUES
 INSERT INTO Games(gameID,game_date,opponent,num_tix,avg_tix_price,s_name) VALUES (49,'2022-01-03','Dove, rock',65670,445.31,'Toy, Swift and Keeling');
 INSERT INTO Games(gameID,game_date,opponent,num_tix,avg_tix_price,s_name) VALUES (50,'2022-12-16','Cat, long-tailed spotted',84176,201.8,'Waters LLC');
 
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('072 Dexter Junction','Ankunding LLC','Dabjam');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('8534 Waxwing Avenue','Toy, Swift and Keeling','Zoozzy');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('659 Katie Road','Flatley and Sons','Yoveo');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('56280 Melvin Road','Fay, Altenwerth and Grant','Eare');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('162 Carioca Court','Hirthe and Sons','Skivee');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('2592 Little Fleur Court','Waters LLC','Blognation');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('6 Mockingbird Point','Heidenreich, Labadie and Krajcik','Aivee');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('83 Sunbrook Center','Hamill, Lang and Wehner','Reallinks');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('45041 Forest Drive','Klein, Schaefer and Friesen','Podcat');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('9 Brentwood Circle','Kub LLC','Skyndu');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('83863 Upham Trail','Haley, Smitham and Toy','Pixonyx');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('30 Sommers Terrace','Hudson-Johnson','Meemm');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('8 Riverside Alley','Rowe, Bergnaum and Hagenes','Eimbee');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('27 Superior Way','Lueilwitz-Hayes','Skibox');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('75288 Lawn Trail','Greenfelder-Kertzmann','Jabbertype');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('470 Redwing Avenue','Runolfsdottir, Gerlach and Lind','Skyba');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('65 Grim Crossing','Koch, Raynor and O''Hara','Edgetag');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('462 Sunfield Point','Barton Inc','Riffwire');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('4 Di Loreto Hill','Walker, Langworth and Runolfsson','Vimbo');
+INSERT INTO Stadium(location,s_name,sponsor) VALUES ('8 Amoth Pass','Kassulke, Torphy and McDermott','Trilith');
+
 
