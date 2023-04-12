@@ -129,7 +129,6 @@ CREATE TABLE IF NOT EXISTS Games
     opponent      VARCHAR(50) NOT NULL,
     num_tix       INTEGER     NOT NULL,
     avg_tix_price FLOAT       NOT NULL,
-    location      VARCHAR(50) NOT NULL,
     s_name        VARCHAR(50) NOT NULL,
     FOREIGN KEY (s_name) REFERENCES Stadium (s_name)
 );
@@ -235,9 +234,9 @@ INSERT INTO Sponsorships
 VALUES (7, 10, 20000000, 'Nike');
 
 INSERT INTO Games
-VALUES (01234, '2022-12-20', 'Lakers', 20000, 88.0, '100 Legends Way', 'TD Garden');
+VALUES (01234, '2022-12-20', 'Lakers', 20000, 88.0, 'TD Garden');
 INSERT INTO Games
-VALUES (02318, '2022-12-25', 'Knicks', 26500, 95.5, '4 Plaza', 'Madison Square Garden');
+VALUES (02318, '2022-12-25', 'Knicks', 26500, 95.5, 'Madison Square Garden');
 
 INSERT INTO PlayerAtGames
 VALUES (0, 01234, 4, 25, 7, 32, 2);
