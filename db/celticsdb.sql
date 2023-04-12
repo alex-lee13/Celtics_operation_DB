@@ -415,5 +415,12 @@ INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,inc
 INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (14,14,18135254,7,35870,'Dracontiasis','Degen ciliary body');
 INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (15,15,4952682,6,7235,'Postauricular fistula','Burn periocular area NEC');
 
+INSERT INTO CoachContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (1,1,28990787,4,13988,'Accident on farm','Hyposmolality');
+INSERT INTO CoachContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (2,2,8354863,6,28005,'Injury splenic artery','Enuresis');
+INSERT INTO CoachContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (3,3,7278168,4,56842,'Malig melanoma ear','Conduc hear loss mid ear');
+INSERT INTO CoachContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (4,4,11664810,10,31599,'Osteoarthros NOS-shlder','Face/brow present-deliv');
+INSERT INTO CoachContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (5,5,19476982,2,69288,'Reg enteritis, sm intest','Pulmonary actinomycosis');
+INSERT INTO CoachContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (6,6,11382601,1,78277,'Diverticulum of pharynx','Desquamatv interst pneu');
+INSERT INTO CoachContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (7,7,2903981,6,26481,'Ca in situ stomach','Chr pept ulc hem/perf-ob');
 
 
