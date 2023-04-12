@@ -67,11 +67,11 @@ CREATE TABLE IF NOT EXISTS CoachContracts
 
 CREATE TABLE IF NOT EXISTS Sponsorships
 (
-    p_number INT UNIQUE  NOT NULL,
+    p_number INT  NOT NULL,
     length   FLOAT       NOT NULL,
     salary   FLOAT       NOT NULL,
     brand    VARCHAR(50),
-    PRIMARY KEY (p_number),
+    PRIMARY KEY (p_number, brand),
     FOREIGN KEY (p_number)
         REFERENCES Players (p_number)
 );
