@@ -201,94 +201,21 @@ CREATE TABLE IF NOT EXISTS PlayerCoaches
     FOREIGN KEY (p_number) REFERENCES Players (p_number)
 );
 
-INSERT INTO Players
-values (0, 'Jayson', 'Tatum', 'Healthy', 80, 220, '1995-10-20', 0, 0, 0, 0, 0, 0, 'jt@gmail.com');
-INSERT INTO Players
-values (7, 'Jaylen', 'Brown', 'Healthy', 76, 200, '1992-11-02', 0, 0, 0, 0, 0, 0, 'jb@gmail.com');
+INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (1,'Dotti','Lippini','Secura Antifungal',83,248,'2000-04-30',31,2726,1905,259,2499,1173,'dlippini0@t.co');
+INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (2,'Annmaria','Wolffers','Nasal Ease Allergy Reliever',68,241,'1995-08-22',14,1601,328,125,2860,736,'awolffers1@shareasale.com');
+INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (3,'Otho','Wraxall','Metoclopramide',64,175,'1981-08-19',55,836,974,277,374,3,'owraxall2@amazon.co.jp');
+INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (4,'Booth','Lampen','Rescon GG',62,173,'1994-08-19',76,155,1992,28,3765,78,'blampen3@blogtalkradio.com');
+INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (5,'Dyane','Bevar','Bromfed',65,245,'2003-07-06',70,3376,599,431,1323,1140,'dbevar4@de.vu');
+INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (6,'Kingsly','Moulden','Amar',75,248,'1981-09-17',1,583,1201,82,3651,1172,'kmoulden5@whitehouse.gov');
+INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (7,'Marja','Timny','Potassium Chloride',57,155,'1990-05-09',51,214,1064,488,3886,1069,'mtimny6@upenn.edu');
+INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (8,'Ingar','Yendall','Red Cedar',82,222,'1985-02-04',71,3755,1106,492,2518,1018,'iyendall7@uiuc.edu');
+INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (9,'Erl','Starmore','Carbinoxamine Maleate',84,269,'1999-07-04',58,565,1841,219,3178,988,'estarmore8@g.co');
+INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (10,'Bonnibelle','Pilkington','Treatment Set TS332340',65,267,'1986-11-13',17,3195,1047,54,1862,700,'bpilkington9@example.com');
+INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (11,'Archer','Tuley','Hormeel',90,231,'2001-02-26',6,3659,1697,256,1664,833,'atuleya@google.nl');
+INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (12,'Vivienne','Elphinston','allergy eye',86,287,'1984-09-23',47,3724,1401,450,3085,178,'velphinstonb@nytimes.com');
+INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (13,'Florian','Corrao','Hand Sanitizer',82,218,'1995-05-08',3,1512,959,369,2246,921,'fcorraoc@jugem.jp');
+INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (14,'Hillier','Krolman','Glandulae suprarenales 6',85,175,'1984-12-07',30,1959,1973,258,622,44,'hkrolmand@smugmug.com');
+INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (15,'Enrico','Hesbrook','Nasal Catarrh',76,171,'1998-12-24',39,853,1852,236,3902,611,'ehesbrooke@zimbio.com');
 
-INSERT INTO Coaches
-VALUES (1, 'Joe', 'Mazzula', 'Head Coach', 'Joe.mazzula@gmail.com', '1988-06-30');
-INSERT INTO Coaches
-VALUES (2, 'Damon', 'Stoudamire', 'Assistant Coach', 'Damon.stoudamire@gmail.com', '1973-09-03');
+select * from Players;
 
-INSERT INTO Stadium
-VALUES ('100 Legends Way', 'TD Garden', 'Whole Foods');
-INSERT INTO Stadium
-VALUES ('4 Plaza', 'Madison Square Garden', 'Colgate');
-
-INSERT INTO CoachContracts
-VALUES (1, 1, 6000000, 4, 5000,
-        '1 million if the Celtics win the championship', '1 million if Celtics win the Eastern Conference');
-INSERT INTO CoachContracts
-VALUES (2, 2, 2000000, 3, 0,
-        '1 million if the Celtics win the championship', '500k if Celtics win the Eastern Conference');
-
-INSERT INTO PlayerCoaches
-VALUES (1, 0, 'Good at creating space and driving to the hoop');
-INSERT INTO PlayerCoaches
-VALUES (1, 7, 'Good shooter as well as finishing through contact');
-
-INSERT INTO Sponsorships
-VALUES (0, 7, 5000000, 'Jordan Brand');
-INSERT INTO Sponsorships
-VALUES (7, 10, 20000000, 'Nike');
-
-INSERT INTO Games
-VALUES (01234, '2022-12-20', 'Lakers', 20000, 88.0, 'TD Garden');
-INSERT INTO Games
-VALUES (02318, '2022-12-25', 'Knicks', 26500, 95.5, 'Madison Square Garden');
-
-INSERT INTO PlayerAtGames
-VALUES (0, 01234, 4, 25, 7, 32, 2);
-INSERT INTO PlayerAtGames
-VALUES (7, 01234, 5, 12, 13, 31, 4);
-
-INSERT INTO ScoutingReports
-VALUES (01234, 6, 8, 'celtics up', 'pick and roll', 'backdoor');
-INSERT INTO ScoutingReports
-VALUES (02318, 7, 6, 'celtics up', 'pick and roll', 'backdoor');
-
-INSERT INTO Broadcasters
-values (1, 'Telemundo', 'USA', 'English');
-INSERT INTO Broadcasters
-values (2, 'ESPN', 'USA', 'English');
-
-INSERT INTO AiredGames
-values (1, 01234, 500000, 12345678.99);
-INSERT INTO AiredGames
-values (2, 01234, 250000, 1234567.89);
-
-INSERT INTO Practices
-VALUES (1, '2023-04-06', 2, 'Boston');
-INSERT INTO Practices
-VALUES (2, '2023-04-07', 2.5, 'Brookline');
-
-INSERT INTO PracticePlan
-values (1, False, 'Shooting', 'Shooting Machine');
-INSERT INTO PracticePlan
-values (2, True, 'Defense', 'Cones');
-
-INSERT INTO PlayerContracts
-values (0, 1, 100000, 4.5, 0, 'All Star', 'First Team');
-INSERT INTO PlayerContracts
-values (7, 2, 90000, 4, 0, 'All Star', 'Second Team');
-
-INSERT INTO Player_at_practice
-VALUES (0, 1, True);
-INSERT INTO Player_at_practice
-VALUES (7, 1, True);
-
-
-SELECT * FROM Players;
-SELECT * FROM PlayerContracts;
-SELECT * FROM Coaches;
-SELECT * FROM Sponsorships;
-SELECT * FROM Practices;
-SELECT * FROM PracticePlan;
-SELECT * FROM Player_at_practice;
-SELECT * FROM Stadium;
-SELECT * FROM Games;
-SELECT * FROM ScoutingReports;
-SELECT * FROM Broadcasters;
-SELECT * FROM AiredGames;
-SELECT * FROM PlayerAtGames;
