@@ -399,6 +399,21 @@ INSERT INTO Games(gameID,game_date,opponent,num_tix,avg_tix_price,s_name) VALUES
 INSERT INTO Games(gameID,game_date,opponent,num_tix,avg_tix_price,s_name) VALUES (49,'2022-01-03','Dove, rock',65670,445.31,'Toy, Swift and Keeling');
 INSERT INTO Games(gameID,game_date,opponent,num_tix,avg_tix_price,s_name) VALUES (50,'2022-12-16','Cat, long-tailed spotted',84176,201.8,'Waters LLC');
 
+INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (1,1,3418590,7,41125,'Behav insomnia-childhood','Ocular torticollis');
+INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (2,2,16755189,4,10135,'Abn cervix NEC-delivered','Rumination disorder');
+INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (3,3,22762710,5,7998,'Joint dis NEC-pelvis','Behcet''s syndrome');
+INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (4,4,4097001,3,22841,'Palindrom rheum-forearm','Hodg lymph-histio abdom');
+INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (5,5,12739169,7,36423,'Sensormotr disor lid NEC','Tox eff org lead compnd');
+INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (6,6,8367791,3,17522,'Spinal cord inj at birth','Obs-susp cardiovasc dis');
+INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (7,7,19405290,4,15567,'Diabetes-antepartum','Opn skull fx NEC/hem NEC');
+INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (8,8,15883273,5,3203,'Angioneurotic edema','Lymphogranuloma venereum');
+INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (9,9,4256070,8,44348,'Acc poisn-skin/eent agnt','Physical restrain status');
+INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (10,10,16038569,2,13722,'Breast dis preg NEC-unsp','Poxvirus infection NOS');
+INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (11,11,23162179,1,35178,'Infertility-uterine orig','Chronic tonsils&adenoids');
+INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (12,12,18758610,6,1611,'Meningococc arthropathy','Terrorism,explosions');
+INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (13,13,4068389,5,26108,'Adv eff mix bact vaccine','Anatomical narrow angle');
+INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (14,14,18135254,7,35870,'Dracontiasis','Degen ciliary body');
+INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (15,15,4952682,6,7235,'Postauricular fistula','Burn periocular area NEC');
 
 
 
