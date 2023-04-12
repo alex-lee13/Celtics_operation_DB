@@ -1,6 +1,5 @@
 CREATE DATABASE celticsDB;
 
-
 use celticsDB;
 
 
@@ -105,7 +104,7 @@ CREATE TABLE IF NOT EXISTS PracticePlan
 CREATE TABLE IF NOT EXISTS Player_at_practice
 (
     p_number     INT         NOT NULL,
-    practice_num INT,
+    practice_num INT NOT NULL,
     attendance   boolean     NOT NULL,
     PRIMARY KEY (p_number, practice_num),
     FOREIGN KEY (practice_num) REFERENCES Practices (practice_num),
@@ -176,7 +175,7 @@ CREATE TABLE IF NOT EXISTS AiredGames
 
 CREATE TABLE IF NOT EXISTS PlayerAtGames
 (
-    p_number  INT UNIQUE  NOT NULL,
+    p_number  INT  NOT NULL,
     gameID    INT         NOT NULL,
     game_ast  INT         NOT NULL,
     game_pts  INT         NOT NULL,
@@ -194,7 +193,7 @@ CREATE TABLE IF NOT EXISTS PlayerAtGames
 CREATE TABLE IF NOT EXISTS PlayerCoaches
 (
     coachID INTEGER NOT NULL,
-    p_number    INTEGER UNIQUE NOT NULL,
+    p_number    INTEGER NOT NULL,
     p_notes     varchar(100),
     PRIMARY KEY (coachID, p_number),
     FOREIGN KEY (coachID) REFERENCES Coaches (coachID),
@@ -217,6 +216,8 @@ INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_p
 INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (14,'Hillier','Krolman','Glandulae suprarenales 6',85,175,'1984-12-07',30,1959,1973,258,622,44,'hkrolmand@smugmug.com');
 INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (15,'Enrico','Hesbrook','Nasal Catarrh',76,171,'1998-12-24',39,853,1852,236,3902,611,'ehesbrooke@zimbio.com');
 
+select * from Players;
+
 INSERT INTO Coaches(coachID,fName,lName,title,email,bdate) VALUES (1,'Anatole','Jakucewicz','Human Resources Manager','ajakucewicz0@people.com.cn','1952-10-06');
 INSERT INTO Coaches(coachID,fName,lName,title,email,bdate) VALUES (2,'Cristie','Marchelli','Operator','cmarchelli1@mapquest.com','1998-12-16');
 INSERT INTO Coaches(coachID,fName,lName,title,email,bdate) VALUES (3,'Vikky','McGurk','Payment Adjustment Coordinator','vmcgurk2@japanpost.jp','1968-08-02');
@@ -224,6 +225,8 @@ INSERT INTO Coaches(coachID,fName,lName,title,email,bdate) VALUES (4,'Emmie','De
 INSERT INTO Coaches(coachID,fName,lName,title,email,bdate) VALUES (5,'Lara','Raftery','Financial Analyst','lraftery4@nature.com','1988-01-28');
 INSERT INTO Coaches(coachID,fName,lName,title,email,bdate) VALUES (6,'Bing','Ackroyd','Librarian','backroyd5@arstechnica.com','1974-09-18');
 INSERT INTO Coaches(coachID,fName,lName,title,email,bdate) VALUES (7,'Myrwyn','Mil','Statistician III','mmil6@omniture.com','1953-08-13');
+
+select * from Coaches;
 
 INSERT INTO Stadium(location,s_name,sponsor) VALUES ('072 Dexter Junction','Ankunding LLC','Dabjam');
 INSERT INTO Stadium(location,s_name,sponsor) VALUES ('8534 Waxwing Avenue','Toy, Swift and Keeling','Zoozzy');
@@ -246,56 +249,7 @@ INSERT INTO Stadium(location,s_name,sponsor) VALUES ('462 Sunfield Point','Barto
 INSERT INTO Stadium(location,s_name,sponsor) VALUES ('4 Di Loreto Hill','Walker, Langworth and Runolfsson','Vimbo');
 INSERT INTO Stadium(location,s_name,sponsor) VALUES ('8 Amoth Pass','Kassulke, Torphy and McDermott','Trilith');
 
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (1,'2022-08-16',56,'Yunmen');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (2,'2022-10-16',116,'Milicz');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (3,'2023-03-06',56,'Qili');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (4,'2022-10-19',63,'København');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (5,'2022-10-20',145,'Ngrejo');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (6,'2023-04-17',121,'Yong’an');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (7,'2022-11-04',103,'Chavães');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (8,'2023-05-12',110,'Dežanovac');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (9,'2022-12-17',125,'Huangliu');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (10,'2022-12-05',77,'Sho’rchi');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (11,'2023-04-05',108,'Shengli');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (12,'2023-03-19',162,'Cikiruh Wetan');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (13,'2023-05-18',67,'Madrid');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (14,'2022-12-15',82,'Menuma');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (15,'2022-08-08',84,'Ratchasan');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (16,'2022-12-16',173,'Natonin');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (17,'2023-05-27',132,'Paris 17');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (18,'2022-10-24',69,'Söderhamn');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (19,'2022-08-04',32,'Nanger');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (20,'2022-09-17',134,'Pasolapida');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (21,'2023-01-03',116,'Sakaraha');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (22,'2023-04-29',37,'Callao');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (23,'2022-10-20',149,'Gotputuk');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (24,'2023-04-07',125,'Rovensko pod Troskami');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (25,'2023-01-25',97,'Punta de Bombón');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (26,'2023-03-05',42,'Dongyuan');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (27,'2022-11-02',90,'Plaeng Yao');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (28,'2023-04-15',111,'Al Hāshimīyah');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (29,'2023-05-15',134,'Bobo-Dioulasso');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (30,'2023-03-14',44,'Ust’-Izhora');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (31,'2023-01-12',126,'North Battleford');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (32,'2022-11-02',173,'Kälviä');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (33,'2023-01-18',86,'Marisol');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (34,'2022-08-08',153,'Xankandi');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (35,'2023-01-11',141,'Stende');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (36,'2023-04-23',67,'Opechenskiy Posad');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (37,'2022-12-28',174,'Nanfeng');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (38,'2022-09-28',157,'Kapyl’');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (39,'2023-01-13',38,'Xiangang');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (40,'2023-03-27',170,'Sanming');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (41,'2022-12-15',148,'Upi');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (42,'2022-10-03',150,'Coutances');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (43,'2022-11-09',54,'Dungloe');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (44,'2023-05-07',119,'Napnapan');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (45,'2022-11-07',167,'Weichanglu');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (46,'2023-03-11',178,'Gostivar');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (47,'2023-05-17',101,'Chaiyo');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (48,'2022-10-28',77,'Shënmëri');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (49,'2022-11-10',124,'Martyush');
-INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (50,'2023-03-20',156,'Pamedilan');
+select * from Stadium;
 
 INSERT INTO Broadcasters(broad_id,broad_name,region,broad_language) VALUES (1,'WSD','Xilaiqiao','Polish');
 INSERT INTO Broadcasters(broad_id,broad_name,region,broad_language) VALUES (2,'ARY','Figueiredo','New Zealand Sign Language');
@@ -348,6 +302,61 @@ INSERT INTO Broadcasters(broad_id,broad_name,region,broad_language) VALUES (48,'
 INSERT INTO Broadcasters(broad_id,broad_name,region,broad_language) VALUES (49,'NLA','Hepu','Papiamento');
 INSERT INTO Broadcasters(broad_id,broad_name,region,broad_language) VALUES (50,'TTB','Yunlu','Gujarati');
 
+select * from Broadcasters;
+
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (1,'2022-08-16',56,'Yunmen');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (2,'2022-10-16',116,'Milicz');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (3,'2023-03-06',56,'Qili');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (4,'2022-10-19',63,'København');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (5,'2022-10-20',145,'Ngrejo');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (6,'2023-04-17',121,'Yong’an');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (7,'2022-11-04',103,'Chavães');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (8,'2023-05-12',110,'Dežanovac');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (9,'2022-12-17',125,'Huangliu');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (10,'2022-12-05',77,'Sho’rchi');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (11,'2023-04-05',108,'Shengli');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (12,'2023-03-19',162,'Cikiruh Wetan');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (13,'2023-05-18',67,'Madrid');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (14,'2022-12-15',82,'Menuma');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (15,'2022-08-08',84,'Ratchasan');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (16,'2022-12-16',173,'Natonin');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (17,'2023-05-27',132,'Paris 17');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (18,'2022-10-24',69,'Söderhamn');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (19,'2022-08-04',32,'Nanger');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (20,'2022-09-17',134,'Pasolapida');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (21,'2023-01-03',116,'Sakaraha');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (22,'2023-04-29',37,'Callao');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (23,'2022-10-20',149,'Gotputuk');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (24,'2023-04-07',125,'Rovensko pod Troskami');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (25,'2023-01-25',97,'Punta de Bombón');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (26,'2023-03-05',42,'Dongyuan');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (27,'2022-11-02',90,'Plaeng Yao');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (28,'2023-04-15',111,'Al Hāshimīyah');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (29,'2023-05-15',134,'Bobo-Dioulasso');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (30,'2023-03-14',44,'Ust’-Izhora');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (31,'2023-01-12',126,'North Battleford');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (32,'2022-11-02',173,'Kälviä');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (33,'2023-01-18',86,'Marisol');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (34,'2022-08-08',153,'Xankandi');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (35,'2023-01-11',141,'Stende');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (36,'2023-04-23',67,'Opechenskiy Posad');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (37,'2022-12-28',174,'Nanfeng');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (38,'2022-09-28',157,'Kapyl’');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (39,'2023-01-13',38,'Xiangang');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (40,'2023-03-27',170,'Sanming');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (41,'2022-12-15',148,'Upi');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (42,'2022-10-03',150,'Coutances');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (43,'2022-11-09',54,'Dungloe');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (44,'2023-05-07',119,'Napnapan');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (45,'2022-11-07',167,'Weichanglu');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (46,'2023-03-11',178,'Gostivar');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (47,'2023-05-17',101,'Chaiyo');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (48,'2022-10-28',77,'Shënmëri');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (49,'2022-11-10',124,'Martyush');
+INSERT INTO Practices(practice_num,pract_date,duration,location) VALUES (50,'2023-03-20',156,'Pamedilan');
+
+select * from Practices;
+
 INSERT INTO Games(gameID,game_date,opponent,num_tix,avg_tix_price,s_name) VALUES (1,'2022-12-15','Eagle, pallas''s fish',11278,122.7,'Flatley and Sons');
 INSERT INTO Games(gameID,game_date,opponent,num_tix,avg_tix_price,s_name) VALUES (2,'2020-11-15','Netted rock dragon',51363,470.85,'Hamill, Lang and Wehner');
 INSERT INTO Games(gameID,game_date,opponent,num_tix,avg_tix_price,s_name) VALUES (3,'2019-12-25','Hornbill, southern ground',67038,398.51,'Runolfsdottir, Gerlach and Lind');
@@ -399,6 +408,41 @@ INSERT INTO Games(gameID,game_date,opponent,num_tix,avg_tix_price,s_name) VALUES
 INSERT INTO Games(gameID,game_date,opponent,num_tix,avg_tix_price,s_name) VALUES (49,'2022-01-03','Dove, rock',65670,445.31,'Toy, Swift and Keeling');
 INSERT INTO Games(gameID,game_date,opponent,num_tix,avg_tix_price,s_name) VALUES (50,'2022-12-16','Cat, long-tailed spotted',84176,201.8,'Waters LLC');
 
+select * from Games;
+
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (15,5,2161734,'Cogibox');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (4,7,3974158,'Mynte');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (10,8,1048034,'Zoombeat');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (13,9,6984298,'Skinte');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (5,7,670217,'Devify');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (12,4,1510144,'Linklinks');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (8,1,78914,'Dabvine');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (2,9,1802899,'Babbleset');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (7,8,9154531,'Zoonoodle');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (9,4,43118,'Ailane');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (14,3,4955444,'Izio');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (1,10,5166819,'Oloo');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (11,10,3334447,'Edgeblab');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (6,1,1924127,'Twimbo');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (3,6,2081353,'Yozio');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (4,4,9665807,'Gigaclub');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (1,6,8665158,'Izio');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (2,6,6783140,'Thoughtstorm');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (9,5,36469,'Rhynyx');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (13,5,7897888,'Vitz');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (6,9,5567549,'Pixonyx');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (14,8,1531061,'Yombu');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (12,7,6602012,'Kayveo');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (5,9,7526167,'Buzzbean');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (11,10,4837284,'Talane');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (10,1,1722801,'Blogpad');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (8,6,9430455,'Aimbu');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (15,6,8909571,'Fivespan');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (3,4,2151192,'Eamia');
+INSERT INTO Sponsorships(p_number,length,salary,brand) VALUES (7,7,8284662,'Photobean');
+
+select * from Sponsorships;
+
 INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (1,1,3418590,7,41125,'Behav insomnia-childhood','Ocular torticollis');
 INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (2,2,16755189,4,10135,'Abn cervix NEC-delivered','Rumination disorder');
 INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (3,3,22762710,5,7998,'Joint dis NEC-pelvis','Behcet''s syndrome');
@@ -415,13 +459,7 @@ INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,inc
 INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (14,14,18135254,7,35870,'Dracontiasis','Degen ciliary body');
 INSERT INTO PlayerContracts(p_number,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (15,15,4952682,6,7235,'Postauricular fistula','Burn periocular area NEC');
 
-INSERT INTO CoachContracts(coachID,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (1,1,28990787,4,13988,'Accident on farm','Hyposmolality');
-INSERT INTO CoachContracts(coachID,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (2,2,8354863,6,28005,'Injury splenic artery','Enuresis');
-INSERT INTO CoachContracts(coachID,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (3,3,7278168,4,56842,'Malig melanoma ear','Conduc hear loss mid ear');
-INSERT INTO CoachContracts(coachID,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (4,4,11664810,10,31599,'Osteoarthros NOS-shlder','Face/brow present-deliv');
-INSERT INTO CoachContracts(coachID,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (5,5,19476982,2,69288,'Reg enteritis, sm intest','Pulmonary actinomycosis');
-INSERT INTO CoachContracts(coachID,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (6,6,11382601,1,78277,'Diverticulum of pharynx','Desquamatv interst pneu');
-INSERT INTO CoachContracts(coachID,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (7,7,2903981,6,26481,'Ca in situ stomach','Chr pept ulc hem/perf-ob');
+select * from PlayerContracts;
 
 INSERT INTO ScoutingReports(gameID,DRTG,ORTG,play_1,play_2,play_3) VALUES (1,4.4,2.9,'Misopates orontium (L.) Raf.','Dicentra cucullaria (L.) Bernh.','Grammitis tenella Kaulf.');
 INSERT INTO ScoutingReports(gameID,DRTG,ORTG,play_1,play_2,play_3) VALUES (2,0.8,0.7,'Luzula multiflora (Ehrh.) Lej. ssp. multiflora','Agalinis paupercula (A. Gray) Britton var. borealis Pennell','Pinus contorta Douglas ex Loudon var. murrayana (Balf.) Engelm.');
@@ -474,6 +512,17 @@ INSERT INTO ScoutingReports(gameID,DRTG,ORTG,play_1,play_2,play_3) VALUES (48,4.
 INSERT INTO ScoutingReports(gameID,DRTG,ORTG,play_1,play_2,play_3) VALUES (49,1.1,2.0,'Megalaria grossa (Pers. ex Nyl.) Hafellner','Polyblastia septentrionalis Lynge','Arabidopsis Heynh.');
 INSERT INTO ScoutingReports(gameID,DRTG,ORTG,play_1,play_2,play_3) VALUES (50,6.8,0.7,'Galium hilendiae Dempster & Ehrend. ssp. carneum (Hilend & J.T. Howell) Dempster & Ehrend.','Diploschistes muscorum (Scop.) R. Sant.','Diervilla lonicera Mill.');
 
+select * from ScoutingReports;
+
+INSERT INTO CoachContracts(coachID,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (1,1,28990787,4,13988,'Accident on farm','Hyposmolality');
+INSERT INTO CoachContracts(coachID,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (2,2,8354863,6,28005,'Injury splenic artery','Enuresis');
+INSERT INTO CoachContracts(coachID,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (3,3,7278168,4,56842,'Malig melanoma ear','Conduc hear loss mid ear');
+INSERT INTO CoachContracts(coachID,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (4,4,11664810,10,31599,'Osteoarthros NOS-shlder','Face/brow present-deliv');
+INSERT INTO CoachContracts(coachID,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (5,5,19476982,2,69288,'Reg enteritis, sm intest','Pulmonary actinomycosis');
+INSERT INTO CoachContracts(coachID,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (6,6,11382601,1,78277,'Diverticulum of pharynx','Desquamatv interst pneu');
+INSERT INTO CoachContracts(coachID,contractID,salary,term,fine,incentive_1,incentive_2) VALUES (7,7,2903981,6,26481,'Ca in situ stomach','Chr pept ulc hem/perf-ob');
+
+select * from CoachContracts;
 
 INSERT INTO PracticePlan(practice_num,lift,focus,equipment) VALUES (1,0,'Green','Vinyl');
 INSERT INTO PracticePlan(practice_num,lift,focus,equipment) VALUES (2,1,'Yellow','Granite');
@@ -526,6 +575,8 @@ INSERT INTO PracticePlan(practice_num,lift,focus,equipment) VALUES (48,1,'Khaki'
 INSERT INTO PracticePlan(practice_num,lift,focus,equipment) VALUES (49,1,'Turquoise','Plexiglass');
 INSERT INTO PracticePlan(practice_num,lift,focus,equipment) VALUES (50,0,'Pink','Stone');
 
+select * from PracticePlan;
+
 INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (1,43,1);
 INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (2,8,1);
 INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (3,16,0);
@@ -574,11 +625,11 @@ INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (15,24,0
 INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (1,2,0);
 INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (2,9,1);
 INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (3,27,1);
-INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (4,5,0);
+INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (4,6,0);
 INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (5,21,1);
 INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (6,33,0);
 INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (7,1,1);
-INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (8,43,0);
+INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (8,2,0);
 INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (9,44,1);
 INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (10,47,1);
 INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (11,16,1);
@@ -586,6 +637,8 @@ INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (12,5,1)
 INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (13,23,1);
 INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (14,47,1);
 INSERT INTO Player_at_practice(p_number,practice_num,attendance) VALUES (15,2,1);
+
+select * from Player_at_practice;
 
 INSERT INTO AiredGames(broad_id,gameID,viewership,revenue) VALUES (17,35,3027,89610.67);
 INSERT INTO AiredGames(broad_id,gameID,viewership,revenue) VALUES (31,6,1904,87673.49);
@@ -638,6 +691,8 @@ INSERT INTO AiredGames(broad_id,gameID,viewership,revenue) VALUES (34,15,1175,21
 INSERT INTO AiredGames(broad_id,gameID,viewership,revenue) VALUES (26,48,5627,94953.12);
 INSERT INTO AiredGames(broad_id,gameID,viewership,revenue) VALUES (48,12,4004,59680.88);
 
+select * from AiredGames;
+
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (6,38,9,45,36,28.96,3);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (13,36,5,34,39,43.19,9);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (2,11,5,34,29,15.17,4);
@@ -663,10 +718,10 @@ INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (9,10,29,53,36,21.43,15);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (7,4,30,1,16,43.99,10);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (2,7,4,62,12,4.04,8);
-INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (13,36,25,66,11,22.83,5);
+INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (13,37,25,66,11,22.83,5);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (5,38,9,62,26,32.89,7);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (2,21,4,7,25,37.1,19);
-INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (13,49,10,41,29,44.35,2);
+INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (13,50,10,41,29,44.35,2);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (9,50,9,88,29,15.93,11);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (12,7,9,89,19,58.15,4);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (4,15,5,88,6,53.05,4);
@@ -676,10 +731,10 @@ INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (4,39,6,79,9,7.01,16);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (15,37,6,34,36,43.42,9);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (2,9,1,31,16,32.03,12);
-INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (11,21,8,30,36,10.24,6);
+INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (11,22,8,30,36,10.24,6);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (5,26,19,97,12,8.41,16);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (14,27,4,33,11,54.9,15);
-INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (9,10,23,96,37,38.26,11);
+INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (9,9,23,96,37,38.26,11);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (1,50,14,91,23,41.41,9);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (8,23,13,47,24,32.37,4);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (10,36,14,55,11,47.92,14);
@@ -689,6 +744,8 @@ INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (13,3,29,14,2,42.5,18);
 INSERT INTO PlayerAtGames(p_number,gameID,game_ast,game_pts,game_rebs,game_mins,game_stls) VALUES (6,46,15,88,1,14.11,9);
 
+select * from PlayerAtGames;
+
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (5,4,'actuating');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (2,8,'non-volatile');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (3,11,'scalable');
@@ -696,14 +753,14 @@ INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,15,'Front-line');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (3,2,'productivity');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (6,5,'knowledge base');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,9,'benchmark');
-INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (6,15,'upward-trending');
+INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (6,10,'upward-trending');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (5,3,'Sharable');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (4,10,'national');
-INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,15,'stable');
+INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,14,'stable');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (2,14,'Intuitive');
-INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (6,5,'projection');
+INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (6,6,'projection');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,6,'matrix');
-INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,9,'archive');
+INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,10,'archive');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (4,6,'bottom-line');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (5,12,'impactful');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (3,6,'fresh-thinking');
@@ -714,28 +771,30 @@ INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (5,8,'data-warehouse'
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (2,15,'high-level');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (6,14,'homogeneous');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (2,3,'Extended');
-INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,10,'Open-architected');
+INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,2,'Open-architected');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (3,15,'data-warehouse');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (7,8,'next generation');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (6,7,'actuating');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (7,14,'Phased');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (5,6,'Streamlined');
-INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,15,'Multi-layered');
+INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,7,'Multi-layered');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (2,6,'User-centric');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (5,10,'Reverse-engineered');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (7,10,'bifurcated');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (2,5,'24 hour');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (3,3,'Proactive');
-INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,2,'Public-key');
-INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (3,2,'application');
+INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,3,'Public-key');
+INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (3,12,'application');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (5,7,'Organized');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (7,11,'throughput');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (2,4,'Synchronised');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,12,'artificial intelligence');
-INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (4,10,'instruction set');
+INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (4,2,'instruction set');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (6,8,'monitoring');
-INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (7,5,'Sharable');
+INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (7,2,'Sharable');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (2,1,'parallelism');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (5,13,'Devolved');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (3,14,'user-facing');
-INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,15,'content-based');
+INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,13,'content-based');
+
+select * from PlayerCoaches;
