@@ -1,20 +1,5 @@
-# MySQL + Flask Boilerplate Project
+Celtics Operations Database
 
-This repo contains a boilerplate setup for spinning up 3 Docker containers: 
-1. A MySQL 8 container for obvious reasons
-1. A Python Flask container to implement a REST API
-1. A Local AppSmith Server
-
-## How to setup and start the containers
-**Important** - you need Docker Desktop installed
-
-1. Clone this repository.  
-1. Create a file named `db_root_password.txt` in the `secrets/` folder and put inside of it the root password for MySQL. 
-1. Create a file named `db_password.txt` in the `secrets/` folder and put inside of it the password you want to use for the a non-root user named webapp. 
-1. In a terminal or command prompt, navigate to the folder with the `docker-compose.yml` file.  
-1. Build the images with `docker compose build`
-1. Start the containers with `docker compose up`.  To run in detached mode, run `docker compose up -d`. 
-
-
+Being a professional athlete can be challenging as there are so many different components to keep track of (Ex: Practice schedules, contract information, player stats). In order to combat this, we wanted to create a database that holds all of this information in one place. Our tool will be applicable to all players of the Boston Celtics, the coaches of the organization, and the league commisioner, granting different kinds of permissions to the different users. 
 
 
