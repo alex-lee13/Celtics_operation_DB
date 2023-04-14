@@ -7,7 +7,7 @@ coaches = Blueprint('coaches', __name__)
 
 #Get all the players from the database
 @coaches.route('/players', methods = ['GET'])
-def get_products():
+def get_players():
   
   # get a cursor object from the database
    cursor = db.get_db().cursor()
