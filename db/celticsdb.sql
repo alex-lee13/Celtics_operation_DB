@@ -1,7 +1,6 @@
--- CREATE DATABASE celticsDB;
+CREATE DATABASE celticsDB;
 
 use celticsDB;
-
 
 CREATE TABLE IF NOT EXISTS Players
 (
@@ -33,7 +32,7 @@ CREATE TABLE IF NOT EXISTS PlayerContracts
     incentive_1 varchar(100),
     incentive_2 varchar(100),
     PRIMARY KEY (p_number, contractID),
-    FOREIGN KEY (p_number) REFERENCES Players (p_number)
+    FOREIGN KEY (p_number) REFERENCES Players (p_number) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -59,7 +58,7 @@ CREATE TABLE IF NOT EXISTS CoachContracts
     incentive_1 varchar(100),
     incentive_2 varchar(100),
     PRIMARY KEY (coachID, contractID),
-    FOREIGN KEY (coachID) REFERENCES Coaches (coachID)
+    FOREIGN KEY (coachID) REFERENCES Coaches (coachID) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -72,7 +71,7 @@ CREATE TABLE IF NOT EXISTS Sponsorships
     brand    VARCHAR(50),
     PRIMARY KEY (p_number, brand),
     FOREIGN KEY (p_number)
-        REFERENCES Players (p_number)
+        REFERENCES Players (p_number)  ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -96,7 +95,7 @@ CREATE TABLE IF NOT EXISTS PracticePlan
     equipment    VARCHAR(50),
     PRIMARY KEY (practice_num),
     FOREIGN KEY (practice_num)
-        REFERENCES Practices (practice_num)
+        REFERENCES Practices (practice_num) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -107,8 +106,8 @@ CREATE TABLE IF NOT EXISTS Player_at_practice
     practice_num INT NOT NULL,
     attendance   boolean     NOT NULL,
     PRIMARY KEY (p_number, practice_num),
-    FOREIGN KEY (practice_num) REFERENCES Practices (practice_num),
-    FOREIGN KEY (p_number) REFERENCES Players (p_number)
+    FOREIGN KEY (practice_num) REFERENCES Practices (practice_num) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (p_number) REFERENCES Players (p_number) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -129,7 +128,7 @@ CREATE TABLE IF NOT EXISTS Games
     num_tix       INTEGER     NOT NULL,
     avg_tix_price FLOAT       NOT NULL,
     s_name        VARCHAR(50) NOT NULL,
-    FOREIGN KEY (s_name) REFERENCES Stadium (s_name)
+    FOREIGN KEY (s_name) REFERENCES Stadium (s_name) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 
@@ -142,7 +141,7 @@ CREATE TABLE IF NOT EXISTS ScoutingReports
     play_1 varchar(100),
     play_2 varchar(100),
     play_3 varchar(100),
-    FOREIGN KEY (gameID) REFERENCES Games (gameID)
+    FOREIGN KEY (gameID) REFERENCES Games (gameID) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -166,9 +165,9 @@ CREATE TABLE IF NOT EXISTS AiredGames
 
     PRIMARY KEY (broad_id, gameID),
     CONSTRAINT broad_id
-        FOREIGN KEY (broad_id) REFERENCES Broadcasters (broad_id),
+        FOREIGN KEY (broad_id) REFERENCES Broadcasters (broad_id)  ON UPDATE CASCADE ON DELETE RESTRICT,
     CONSTRAINT gameID
-        FOREIGN KEY (gameID) REFERENCES Games (gameID)
+        FOREIGN KEY (gameID) REFERENCES Games (gameID) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -184,9 +183,9 @@ CREATE TABLE IF NOT EXISTS PlayerAtGames
     game_stls INT         NOT NULL,
     PRIMARY KEY (p_number, gameID),
     CONSTRAINT game_ID
-        FOREIGN KEY (gameID) REFERENCES Games (gameID),
+        FOREIGN KEY (gameID) REFERENCES Games (gameID) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT player_id
-        FOREIGN KEY (p_number) REFERENCES Players (p_number)
+        FOREIGN KEY (p_number) REFERENCES Players (p_number) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -196,8 +195,8 @@ CREATE TABLE IF NOT EXISTS PlayerCoaches
     p_number    INTEGER NOT NULL,
     p_notes     varchar(100),
     PRIMARY KEY (coachID, p_number),
-    FOREIGN KEY (coachID) REFERENCES Coaches (coachID),
-    FOREIGN KEY (p_number) REFERENCES Players (p_number)
+    FOREIGN KEY (coachID) REFERENCES Coaches (coachID) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (p_number) REFERENCES Players (p_number) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO Players(p_number,fName,lName,inj_status,height,weight,bdate,GP,tot_pts,tot_rbds,tot_stls,tot_mins,tot_asts,email) VALUES (1,'Dotti','Lippini','Secura Antifungal',83,248,'2000-04-30',31,2726,1905,259,2499,1173,'dlippini0@t.co');
@@ -798,3 +797,38 @@ INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (3,14,'user-facing');
 INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,13,'content-based');
 
 select * from PlayerCoaches;
+
+#ALL SQL STATEMENTS FOR ROUTES IN ORDER
+#GET: /players
+SELECT p_number, fName, lName, height, weight from Players;
+#GET: /players/{p_number} EDIT TO INCLUDE DATA
+SELECT * from Players WHERE p_number = 1;
+#GET: /practices
+SELECT * from Practices;
+#POST: /practices EDIT TO INCLUDE DATA
+INSERT INTO Practices VALUES (51, '2023-03-02', 60, 'Penis');
+#PUT: /practices/{practice_num}
+UPDATE Practices SET pract_date = '1999-01-01' WHERE practice_num = 1;
+#DELETE: /practices/{practice_num}
+DELETE from Practices WHERE practice_num = 51;
+#GET: /games
+SELECT gameID, game_date, opponent from Games;
+#PUT: /games/{gameID}
+#change three plays
+UPDATE ScoutingReports SET play_1 = 'a', play_2 = 'b', play_3 = 'c' WHERE gameID = 1;
+
+#COMMISSIONER
+#GET: /games/{gameID}
+SELECT gameID, game_date, num_tix, avg_tix_price, s_name from Games;
+#POST: /games
+INSERT INTO Games(gameID, game_date, opponent, num_tix, avg_tix_price, s_name) VALUES (51, '2023-01-01', 'Knicks', 1000, 100, 'Waters LLC');
+#PUT: /games/{gameID}
+UPDATE Games SET game_date = '2024-01-1' WHERE gameID = 51;
+#DELETE: /games/{gameID}
+DELETE from Games WHERE gameID = 51;
+#GET: /playercontracts
+SELECT p_number, salary, term from PlayerContracts;
+#PUT: /playercontracts/{p_number}
+UPDATE PlayerContracts SET fine = 1000 WHERE p_number = 1;
+#DELETE: /playercontracts/{p_number}
+
