@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
@@ -11,7 +11,7 @@ def get_players():
   # get a cursor object from the database
    cursor = db.get_db().cursor()
     
-   # use cursor to query the database for a list of products
+   # use cursor to query the database for a list of players
    cursor.execute('SELECT p_number, fName, lName, height, weight FROM Players')
 
    # grab the column headers from the returned data
@@ -32,7 +32,7 @@ def get_players():
    return jsonify(json_data)
 
 
-# Get all practices from the databse
+# Get a players' stats from the databse
 @lc.route('/players/{p_number}', methods = ['GET'])
 def get_practices():
   
@@ -74,18 +74,25 @@ def get_games():
 # LC can post any new games 
 @lc.route('/games', methods = ['POST'])
 def post_games():
-  
-   cursor = db.get_db().cursor()
-    
-   cursor.execute('INSERT INTO Games VALUES(51, '2023-01-01', 'Knicks', 1000, 100, 'Waters LLC')')
+    # access json data from request object
+    current_app.loger.info("Processing form data")
+    req_data = request.get_json()
+    current_app.logger.info(req_data)
 
-   column_headers = [x[0] for x in cursor.description]
+    gameID = req_data['gameID']
+    date = req_data['opponent']
+    num_tix = req_data['num_tix']
+    avg_tix_price = req_data['avg_tix_price']
+    s_name = req_data['s_name']
 
-   json_data = []
+    # construct insert statement
+    insert_stmt = 'INSERT INTO Games VALUES ('
+    insert_stmt += str(gameID) + ', "', date, + '", ' + str(num_tix) + ', ' + str(avg_tix_price) + ', "' + s_name + '")'
 
-   theData = cursor.fetchall()
+    current_app.logger.info(insert_stmt)
 
-   for row in theData:
-       json_data.append(dict(zip(column_headers, row)))
-
-   return jsonify(json_data)
+    # execute the query
+    cursor = db.get_db().cursor()
+    cursor.execute(insert_stmt)
+    db.get_db().commit()
+    return 'Success!'
