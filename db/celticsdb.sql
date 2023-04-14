@@ -830,5 +830,10 @@ DELETE from Games WHERE gameID = 51;
 SELECT p_number, salary, term from PlayerContracts;
 #PUT: /playercontracts/{p_number}
 UPDATE PlayerContracts SET fine = 1000 WHERE p_number = 1;
+#GET: /playercontracts/{p_number}
+SELECT * from PlayerContracts WHERE p_number = 1;
 #DELETE: /playercontracts/{p_number}
+#DELETE from PlayerContracts WHERE p_number = 1;
+select * from Players;
+select * from Sponsorships;
 
