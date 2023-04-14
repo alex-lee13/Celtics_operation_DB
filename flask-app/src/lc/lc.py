@@ -52,12 +52,12 @@ def get_practices():
    return jsonify(json_data)
 
 # Gets all the game data for a game
-@lc.route('/games/{game_id}', methods = ['GET'])
+@lc.route('/games/<gameID>', methods = ['GET'])
 def get_games():
   
    cursor = db.get_db().cursor()
     
-   cursor.execute('SELECT gameID, game_date, num_tix, avg_tix_price, s_name FROM Games')
+   cursor.execute('SELECT gameID, game_date, num_tix, avg_tix_price, s_name FROM Games WHERE gameID={gameID}')
 
    column_headers = [x[0] for x in cursor.description]
 
