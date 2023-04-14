@@ -6,7 +6,7 @@ from src import db
 coaches = Blueprint('coaches', __name__)
 
 #Get all the players from the database
-@coaches.route('/coaches', methods = ['GET'])
+@coaches.route('/players', methods = ['GET'])
 def get_products():
   
   # get a cursor object from the database
