@@ -1,4 +1,4 @@
-CREATE DATABASE celticsDB;
+-- CREATE DATABASE celticsDB;
 
 use celticsDB;
 
