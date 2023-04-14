@@ -7,12 +7,12 @@ coaches = Blueprint('coaches', __name__)
 
 #Get all the players from the database
 @coaches.route('/players', methods = ['GET'])
-def get_players():
+def get__all_players():
   
   # get a cursor object from the database
    cursor = db.get_db().cursor()
     
-   # use cursor to query the database for a list of players
+   # use cursor to query the database for a list of products
    cursor.execute('SELECT p_number, fName, lName, height, weight FROM Players')
 
    # grab the column headers from the returned data
@@ -32,15 +32,13 @@ def get_players():
 
    return jsonify(json_data)
 
-# Get all practices from the databse
-@coaches.route('/players', methods = ['GET'])
-def get_practices():
-  
+@coaches.route('/players/<p_number>', methods = ['GET'])
+def get_player(p_number):
   # get a cursor object from the database
    cursor = db.get_db().cursor()
     
-   # use cursor to query the database for a list of practices
-   cursor.execute('SELECT * FROM Players')
+   # use cursor to query the database for a list of products
+   cursor.execute('SELECT * from Players WHERE p_number = {0}'.format(p_number))
 
    # grab the column headers from the returned data
    column_headers = [x[0] for x in cursor.description]
@@ -58,3 +56,4 @@ def get_practices():
        json_data.append(dict(zip(column_headers, row)))
 
    return jsonify(json_data)
+  
