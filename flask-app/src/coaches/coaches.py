@@ -188,6 +188,32 @@ def update_scoutingreport(gameID):
     db.get_db().commit()
     return 'Success!'
 
+@coaches.route('/games', methods = ['POST'])
+def post_scoutingreport():
+    # access json data from request object
+    current_app.logger.info("Processing form data")
+    req_data = request.get_json()
+    current_app.logger.info(req_data)
+
+    gameID = req_data['gameID']
+    DRTG = req_data['DRTG']
+    ORTG = req_data['ORTG']
+    play_1 = req_data['play_1']
+    play_2 = req_data['play_2']
+    play_3 = req_data['play_3']
+
+    # construct insert statement
+    insert_stmt = 'INSERT INTO ScoutingReports VALUES ('
+    insert_stmt +=  str(gameID) + ', ' + str(DRTG) + ', ' + str(ORTG) + ', "' + play_1 + '", "' + play_2 + '", "' + play_3 + '")'.format(gameID)
+
+    current_app.logger.info(insert_stmt)
+
+    # execute the query
+    cursor = db.get_db().cursor()
+    cursor.execute(insert_stmt)
+    db.get_db().commit()
+    return 'Success!'
+
 
 
   
