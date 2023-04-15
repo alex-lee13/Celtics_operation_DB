@@ -83,7 +83,7 @@ def get_all_practices():
    return jsonify(json_data)
 
 @coaches.route('/games', methods = ['GET'])
-def get_all_practices():
+def get_all_games():
     # get a cursor object from the database
    cursor = db.get_db().cursor()
     
