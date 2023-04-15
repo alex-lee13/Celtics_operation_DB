@@ -130,4 +130,22 @@ def post_practice():
     cursor.execute(insert_stmt)
     db.get_db().commit()
     return 'Success!'
+
+@coaches.route('/practices/<practice_num>', methods = ['DELETE'])
+def delete_practice(practice_num):
+    # access json data from request object
+    current_app.logger.info("Processing form data")
+    req_data = request.get_json()
+    current_app.logger.info(req_data)
+
+    # construct insert statement
+    delete_stmt = 'DELETE from Practices WHERE practice_num = {0}'.format(practice_num)
+
+    current_app.logger.info(delete_stmt)
+
+    # execute the query
+    cursor = db.get_db().cursor()
+    cursor.execute(delete_stmt)
+    db.get_db().commit()
+    return 'Success!'
   
