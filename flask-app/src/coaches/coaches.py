@@ -110,7 +110,7 @@ def get_all_games():
 @coaches.route('/practices', methods = ['POST'])
 def post_practice():
     # access json data from request object
-    current_app.loger.info("Processing form data")
+    current_app.logger.info("Processing form data")
     req_data = request.get_json()
     current_app.logger.info(req_data)
 
@@ -121,7 +121,7 @@ def post_practice():
 
     # construct insert statement
     insert_stmt = 'INSERT INTO Practices VALUES ('
-    insert_stmt += str(practice_num) + ', "', pract_date, + '", ' + str(duration) + ', "' + location + '")'
+    insert_stmt += str(practice_num) + ', "' + pract_date + '", ' + str(duration) + ', "' + location + '")'
 
     current_app.logger.info(insert_stmt)
 

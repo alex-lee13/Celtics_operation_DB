@@ -74,7 +74,7 @@ def get_games(gameID):
 @lc.route('/games', methods = ['POST'])
 def post_games():
     # access json data from request object
-    current_app.loger.info("Processing form data")
+    current_app.logger.info("Processing form data")
     req_data = request.get_json()
     current_app.logger.info(req_data)
 
@@ -86,7 +86,7 @@ def post_games():
 
     # construct insert statement
     insert_stmt = 'INSERT INTO Games VALUES ('
-    insert_stmt += str(gameID) + ', "', date, + '", ' + str(num_tix) + ', ' + str(avg_tix_price) + ', "' + s_name + '")'
+    insert_stmt += str(gameID) + ', "'+ date + '", ' + str(num_tix) + ', ' + str(avg_tix_price) + ', "' + s_name + '")'
 
     current_app.logger.info(insert_stmt)
 
