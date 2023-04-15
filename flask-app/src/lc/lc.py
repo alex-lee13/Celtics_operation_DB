@@ -6,7 +6,7 @@ from src import db
 lc = Blueprint('lc', __name__)
 
 @lc.route('/players', methods = ['GET'])
-def get_all_players():
+def get_players():
   
   # get a cursor object from the database
    cursor = db.get_db().cursor()
@@ -32,12 +32,13 @@ def get_all_players():
    return jsonify(json_data)
 
 
-@lc.route('/players/<p_number>', methods = ['GET'])
-def get_player(p_number):
-
+# Get a players' stats from the databse
+@lc.route('/players/{p_number}', methods = ['GET'])
+def get_practices():
+  
    cursor = db.get_db().cursor()
     
-   cursor.execute('SELECT * from Players WHERE p_number = {0}'.format(p_number))
+   cursor.execute('SELECT * FROM Players')
 
    column_headers = [x[0] for x in cursor.description]
 
@@ -52,11 +53,11 @@ def get_player(p_number):
 
 # Gets all the game data for a game
 @lc.route('/games/<gameID>', methods = ['GET'])
-def get_games(gameID):
+def get_games():
   
    cursor = db.get_db().cursor()
     
-   cursor.execute('SELECT gameID, game_date, num_tix, avg_tix_price, s_name FROM Games WHERE gameID = {0}'.format(gameID))
+   cursor.execute('SELECT gameID, game_date, num_tix, avg_tix_price, s_name FROM Games WHERE gameID={gameID}')
 
    column_headers = [x[0] for x in cursor.description]
 
@@ -74,7 +75,7 @@ def get_games(gameID):
 @lc.route('/games', methods = ['POST'])
 def post_games():
     # access json data from request object
-    current_app.logger.info("Processing form data")
+    current_app.loger.info("Processing form data")
     req_data = request.get_json()
     current_app.logger.info(req_data)
 
@@ -86,7 +87,7 @@ def post_games():
 
     # construct insert statement
     insert_stmt = 'INSERT INTO Games VALUES ('
-    insert_stmt += str(gameID) + ', "'+ date + '", ' + str(num_tix) + ', ' + str(avg_tix_price) + ', "' + s_name + '")'
+    insert_stmt += str(gameID) + ', "', date, + '", ' + str(num_tix) + ', ' + str(avg_tix_price) + ', "' + s_name + '")'
 
     current_app.logger.info(insert_stmt)
 
@@ -95,45 +96,17 @@ def post_games():
     cursor.execute(insert_stmt)
     db.get_db().commit()
     return 'Success!'
-  
- 
 
-@lc.route('/PlayerContracts', methods = ['GET'])
-def get_playercontracts():
-  
-   cursor = db.get_db().cursor()
-    
-   cursor.execute('SELECT p_number, salary, term from PlayerContracts')
+# LC can delete a player's contract
+@lc.route('/playercontracts/<p_number>', methods=['DELETE'])
+def delete_contract(p_number):
+    # construct delete statement
+    delete_stmt = 'DELETE from PlayerContracts WHERE p_number = {0}'.format(p_number)
 
-   column_headers = [x[0] for x in cursor.description]
+    current_app.logger.info(delete_stmt)
 
-   json_data = []
-
-   theData = cursor.fetchall()
-
-   for row in theData:
-       json_data.append(dict(zip(column_headers, row)))
-
-   return jsonify(json_data)
-
-
-
-# Gets all the game data for a game
-@lc.route('/PlayerContracts/<p_number>', methods = ['GET'])
-def get_players_contract(p_number):
-  
-   cursor = db.get_db().cursor()
-    
-   cursor.execute('SELECT p_number, salary, term from PlayerContracts WHERE p_number = {0}'.format(p_number))
-
-   column_headers = [x[0] for x in cursor.description]
-
-   json_data = []
-
-   theData = cursor.fetchall()
-
-   for row in theData:
-       json_data.append(dict(zip(column_headers, row)))
-
-   return jsonify(json_data)
-
+    # execute the query
+    cursor = db.get_db().cursor()
+    cursor.execute(delete_stmt)
+    db.get_db().commit()
+    return 'Success!'
