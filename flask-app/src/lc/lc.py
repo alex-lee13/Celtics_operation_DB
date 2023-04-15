@@ -95,4 +95,45 @@ def post_games():
     cursor.execute(insert_stmt)
     db.get_db().commit()
     return 'Success!'
+  
+ 
+
+@lc.route('/PlayerContracts', methods = ['GET'])
+def get_playercontracts():
+  
+   cursor = db.get_db().cursor()
+    
+   cursor.execute('SELECT p_number, salary, term from PlayerContracts')
+
+   column_headers = [x[0] for x in cursor.description]
+
+   json_data = []
+
+   theData = cursor.fetchall()
+
+   for row in theData:
+       json_data.append(dict(zip(column_headers, row)))
+
+   return jsonify(json_data)
+
+
+
+# Gets all the game data for a game
+@lc.route('/PlayerContracts/<p_number>', methods = ['GET'])
+def get_players_contract(p_number):
+  
+   cursor = db.get_db().cursor()
+    
+   cursor.execute('SELECT p_number, salary, term from PlayerContracts WHERE p_number = {0}'.format(p_number))
+
+   column_headers = [x[0] for x in cursor.description]
+
+   json_data = []
+
+   theData = cursor.fetchall()
+
+   for row in theData:
+       json_data.append(dict(zip(column_headers, row)))
+
+   return jsonify(json_data)
 
