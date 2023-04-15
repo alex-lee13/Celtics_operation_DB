@@ -133,10 +133,6 @@ def post_practice():
 
 @coaches.route('/practices/<practice_num>', methods = ['DELETE'])
 def delete_practice(practice_num):
-    # access json data from request object
-    current_app.logger.info("Processing form data")
-    req_data = request.get_json()
-    current_app.logger.info(req_data)
 
     # construct delete statement
     delete_stmt = 'DELETE from Practices WHERE practice_num = {0}'.format(practice_num)
@@ -168,5 +164,30 @@ def update_practice(practice_num):
     cursor.execute(put_stmt)
     db.get_db().commit()
     return 'Success!'
+
+@coaches.route('/games/<gameID>', methods = ['PUT'])
+def update_scoutingreport(gameID):
+    # access json data from request object
+    current_app.logger.info("Processing form data")
+    req_data = request.get_json()
+    current_app.logger.info(req_data)
+
+    play_1 = req_data['play_1']
+    play_2 = req_data['play_2']
+    play_3 = req_data['play_3']
+
+    # construct insert statement
+    update_stmt = 'UPDATE ScoutingReports SET play_1 = "' + play_1 + '", play_2 = "' + play_2 + '", play_3 = "' + play_3 + '"'
+    update_stmt += 'WHERE gameID = {0}'.format(gameID)
+
+    current_app.logger.info(update_stmt)
+
+    # execute the query
+    cursor = db.get_db().cursor()
+    cursor.execute(update_stmt)
+    db.get_db().commit()
+    return 'Success!'
+
+
 
   
