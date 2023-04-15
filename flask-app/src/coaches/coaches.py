@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
@@ -106,4 +106,28 @@ def get_all_games():
        json_data.append(dict(zip(column_headers, row)))
 
    return jsonify(json_data)
+
+@coaches.route('/practices', methods = ['POST'])
+def post_practice():
+    # access json data from request object
+    current_app.loger.info("Processing form data")
+    req_data = request.get_json()
+    current_app.logger.info(req_data)
+
+    practice_num = req_data['practice_num']
+    pract_date = req_data['pract_date']
+    duration = req_data['duration']
+    location = req_data['location']
+
+    # construct insert statement
+    insert_stmt = 'INSERT INTO Practices VALUES ('
+    insert_stmt += str(practice_num) + ', "', pract_date, + '", ' + str(duration) + ', "' + location + '")'
+
+    current_app.logger.info(insert_stmt)
+
+    # execute the query
+    cursor = db.get_db().cursor()
+    cursor.execute(insert_stmt)
+    db.get_db().commit()
+    return 'Success!'
   
