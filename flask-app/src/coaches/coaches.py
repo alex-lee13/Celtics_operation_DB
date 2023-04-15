@@ -138,7 +138,7 @@ def delete_practice(practice_num):
     req_data = request.get_json()
     current_app.logger.info(req_data)
 
-    # construct insert statement
+    # construct delete statement
     delete_stmt = 'DELETE from Practices WHERE practice_num = {0}'.format(practice_num)
 
     current_app.logger.info(delete_stmt)
@@ -148,4 +148,25 @@ def delete_practice(practice_num):
     cursor.execute(delete_stmt)
     db.get_db().commit()
     return 'Success!'
+
+@coaches.route('/practices/<practice_num>', methods = ['PUT'])
+def update_practice(practice_num):
+    # access json data from request object
+    current_app.logger.info("Processing form data")
+    req_data = request.get_json()
+    current_app.logger.info(req_data)
+   # construct putstatement
+
+    pract_date = req_data['pract_date']
+
+    put_stmt = 'UPDATE Practices SET pract_date = "' + pract_date + '" WHERE practice_num = {0}'.format(practice_num)
+
+    current_app.logger.info(put_stmt)
+
+    # execute the query
+    cursor = db.get_db().cursor()
+    cursor.execute(put_stmt)
+    db.get_db().commit()
+    return 'Success!'
+
   
