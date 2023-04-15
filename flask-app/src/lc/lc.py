@@ -6,7 +6,7 @@ from src import db
 lc = Blueprint('lc', __name__)
 
 @lc.route('/players', methods = ['GET'])
-def get_players():
+def get_all_players():
   
   # get a cursor object from the database
    cursor = db.get_db().cursor()
@@ -32,13 +32,12 @@ def get_players():
    return jsonify(json_data)
 
 
-# Get a players' stats from the databse
-@lc.route('/players/{p_number}', methods = ['GET'])
-def get_practices():
-  
+@lc.route('/players/<p_number>', methods = ['GET'])
+def get_player(p_number):
+
    cursor = db.get_db().cursor()
     
-   cursor.execute('SELECT * FROM Players')
+   cursor.execute('SELECT * from Players WHERE p_number = {0}'.format(p_number))
 
    column_headers = [x[0] for x in cursor.description]
 
@@ -53,11 +52,11 @@ def get_practices():
 
 # Gets all the game data for a game
 @lc.route('/games/<gameID>', methods = ['GET'])
-def get_games():
+def get_games(gameID):
   
    cursor = db.get_db().cursor()
     
-   cursor.execute('SELECT gameID, game_date, num_tix, avg_tix_price, s_name FROM Games WHERE gameID={gameID}')
+   cursor.execute('SELECT gameID, game_date, num_tix, avg_tix_price, s_name FROM Games WHERE gameID = {0}'.format(gameID))
 
    column_headers = [x[0] for x in cursor.description]
 
@@ -96,3 +95,4 @@ def post_games():
     cursor.execute(insert_stmt)
     db.get_db().commit()
     return 'Success!'
+
