@@ -97,6 +97,20 @@ def post_games():
     db.get_db().commit()
     return 'Success!'
 
+# LC can delete a game
+@lc.route('/games/<gameID>', methods=['DELETE'])
+def delete_game(gameID):
+    # construct delete statement
+    delete_stmt = 'DELETE from Games WHERE gameID = {0}'.format(gameID)
+
+    current_app.logger.info(delete_stmt)
+
+    # execute the query
+    cursor = db.get_db().cursor()
+    cursor.execute(delete_stmt)
+    db.get_db().commit()
+    return 'Success!'
+
 @lc.route('/playercontracts/<p_number>', methods=['PUT'])
 def update_player_contract(p_number):
     # access json data from request object
