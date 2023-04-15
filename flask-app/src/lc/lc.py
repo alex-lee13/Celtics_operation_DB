@@ -97,6 +97,26 @@ def post_games():
     db.get_db().commit()
     return 'Success!'
 
+@lc.route('/playercontracts/<p_number>', methods=['PUT'])
+def update_player_contract(p_number):
+    # access json data from request object
+    current_app.logger.info("Processing form data")
+    req_data = request.get_json()
+    current_app.logger.info(req_data)
+
+   # construct put statement
+    fine = req_data['fine']
+
+    put_stmt = 'UPDATE PlayerContracts SET fine = ' + str(fine) + ' WHERE p_number = {0}'.format(p_number)
+
+    current_app.logger.info(put_stmt)
+
+    # execute the query
+    cursor = db.get_db().cursor()
+    cursor.execute(put_stmt)
+    db.get_db().commit()
+    return 'Success!'
+
 # LC can delete a player's contract
 @lc.route('/playercontracts/<p_number>', methods=['DELETE'])
 def delete_contract(p_number):
