@@ -33,12 +33,12 @@ def get_players():
 
 
 # Get a players' stats from the databse
-@lc.route('/players/{p_number}', methods = ['GET'])
-def get_practices():
+@lc.route('/players/<p_number>', methods = ['GET'])
+def get_player(p_number):
   
    cursor = db.get_db().cursor()
     
-   cursor.execute('SELECT * FROM Players')
+   cursor.execute('SELECT * FROM Players WHERE p_number = {0}'.format(p_number))
 
    column_headers = [x[0] for x in cursor.description]
 
@@ -53,11 +53,11 @@ def get_practices():
 
 # Gets all the game data for a game
 @lc.route('/games/<gameID>', methods = ['GET'])
-def get_games():
+def get_games(gameID):
   
    cursor = db.get_db().cursor()
     
-   cursor.execute('SELECT gameID, game_date, num_tix, avg_tix_price, s_name FROM Games WHERE gameID={gameID}')
+   cursor.execute('SELECT gameID, game_date, num_tix, avg_tix_price, s_name FROM Games WHERE gameID = {0}'.format(gameID))
 
    column_headers = [x[0] for x in cursor.description]
 
@@ -75,19 +75,20 @@ def get_games():
 @lc.route('/games', methods = ['POST'])
 def post_games():
     # access json data from request object
-    current_app.loger.info("Processing form data")
+    current_app.logger.info("Processing form data")
     req_data = request.get_json()
     current_app.logger.info(req_data)
 
     gameID = req_data['gameID']
-    date = req_data['opponent']
+    game_date = req_data['game_date']
+    opponent = req_data['opponent']
     num_tix = req_data['num_tix']
     avg_tix_price = req_data['avg_tix_price']
     s_name = req_data['s_name']
 
     # construct insert statement
     insert_stmt = 'INSERT INTO Games VALUES ('
-    insert_stmt += str(gameID) + ', "', date, + '", ' + str(num_tix) + ', ' + str(avg_tix_price) + ', "' + s_name + '")'
+    insert_stmt += str(gameID) + ', "' + game_date + '", "' + opponent + '", ' + str(num_tix) + ', ' + str(avg_tix_price) + ', "' + s_name + '")'
 
     current_app.logger.info(insert_stmt)
 
