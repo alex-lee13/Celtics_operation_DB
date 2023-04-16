@@ -798,6 +798,7 @@ INSERT INTO PlayerCoaches(coachID,p_number,p_notes) VALUES (1,13,'content-based'
 
 select * from PlayerCoaches;
 
+/*
 #ALL SQL STATEMENTS FOR ROUTES IN ORDER
 #GET: /players
 SELECT p_number, fName, lName, height, weight from Players;
@@ -839,3 +840,4 @@ select * from Sponsorships;
 
 select * from Games;
 
+*/
