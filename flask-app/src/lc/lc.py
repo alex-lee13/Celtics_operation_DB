@@ -98,6 +98,27 @@ def post_games():
     db.get_db().commit()
     return 'Success!'
 
+# Update date of the game
+@lc.route('/games/<gameID>', methods=['PUT'])
+def update_game_details(gameID):
+    # access json data from request object
+    current_app.logger.info("Processing form data")
+    req_data = request.get_json()
+    current_app.logger.info(req_data)
+
+   # construct put statement
+    game_date = req_data['game_date']
+
+    put_stmt = 'UPDATE Games SET game_date = "' + game_date + '" WHERE gameID = {0}'.format(gameID)
+
+    current_app.logger.info(put_stmt)
+
+    # execute the query
+    cursor = db.get_db().cursor()
+    cursor.execute(put_stmt)
+    db.get_db().commit()
+    return 'Success!'
+
 # LC can delete a game
 @lc.route('/games/<gameID>', methods=['DELETE'])
 def delete_game(gameID):
@@ -111,6 +132,44 @@ def delete_game(gameID):
     cursor.execute(delete_stmt)
     db.get_db().commit()
     return 'Success!'
+
+# Get all players' contracts from the databse
+@lc.route('/playercontracts', methods = ['GET'])
+def get_playercontracts():
+  
+   cursor = db.get_db().cursor()
+    
+   cursor.execute('SELECT p_number, salary, term FROM PlayerContracts')
+
+   column_headers = [x[0] for x in cursor.description]
+
+   json_data = []
+
+   theData = cursor.fetchall()
+
+   for row in theData:
+       json_data.append(dict(zip(column_headers, row)))
+
+   return jsonify(json_data)
+
+# Get a player's contract details from the databse
+@lc.route('/playercontracts/<p_number>', methods = ['GET'])
+def get_playercontract(p_number):
+  
+   cursor = db.get_db().cursor()
+    
+   cursor.execute('SELECT * FROM PlayerContracts WHERE p_number = {0}'.format(p_number))
+
+   column_headers = [x[0] for x in cursor.description]
+
+   json_data = []
+
+   theData = cursor.fetchall()
+
+   for row in theData:
+       json_data.append(dict(zip(column_headers, row)))
+
+   return jsonify(json_data)
 
 @lc.route('/playercontracts/<p_number>', methods=['PUT'])
 def update_player_contract(p_number):
