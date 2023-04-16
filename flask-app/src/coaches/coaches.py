@@ -188,6 +188,7 @@ def update_scoutingreport(gameID):
     db.get_db().commit()
     return 'Success!'
 
+# Post a new scouting report for a new game (game needs to be created separately)
 @coaches.route('/games', methods = ['POST'])
 def post_scoutingreport():
     # access json data from request object
@@ -213,7 +214,3 @@ def post_scoutingreport():
     cursor.execute(insert_stmt)
     db.get_db().commit()
     return 'Success!'
-
-
-
-  

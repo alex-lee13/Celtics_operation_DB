@@ -171,6 +171,7 @@ def get_playercontract(p_number):
 
    return jsonify(json_data)
 
+# Update the fine quantity for a player
 @lc.route('/playercontracts/<p_number>', methods=['PUT'])
 def update_player_contract(p_number):
     # access json data from request object

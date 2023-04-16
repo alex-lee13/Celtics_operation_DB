@@ -825,7 +825,7 @@ INSERT INTO Games(gameID, game_date, opponent, num_tix, avg_tix_price, s_name) V
 #PUT: /games/{gameID}
 UPDATE Games SET game_date = '2024-01-1' WHERE gameID = 51;
 #DELETE: /games/{gameID}
-DELETE from Games WHERE gameID = 51;
+DELETE from Games WHERE gameID = 52;
 #GET: /playercontracts
 SELECT p_number, salary, term from PlayerContracts;
 #PUT: /playercontracts/{p_number}
@@ -836,4 +836,6 @@ SELECT * from PlayerContracts WHERE p_number = 1;
 #DELETE from PlayerContracts WHERE p_number = 1;
 select * from Players;
 select * from Sponsorships;
+
+select * from Games;
 
