@@ -51,6 +51,26 @@ def get_player(p_number):
 
    return jsonify(json_data)
 
+# Gets all the games' gameIDs 
+@lc.route('/games', methods = ['GET'])
+def get_total_games():
+  
+   cursor = db.get_db().cursor()
+    
+   cursor.execute('SELECT * FROM Games')
+
+   column_headers = [x[0] for x in cursor.description]
+
+   json_data = []
+
+   theData = cursor.fetchall()
+
+   for row in theData:
+       json_data.append(dict(zip(column_headers, row)))
+
+   return jsonify(json_data)
+
+
 # Gets all the game data for a game
 @lc.route('/games/<gameID>', methods = ['GET'])
 def get_games(gameID):
@@ -107,7 +127,7 @@ def update_game_details(gameID):
     current_app.logger.info(req_data)
 
    # construct put statement
-    game_date = req_data['game_date']
+    game_date = req_data['gamedate']
 
     put_stmt = 'UPDATE Games SET game_date = "' + game_date + '" WHERE gameID = {0}'.format(gameID)
 

@@ -841,3 +841,5 @@ select * from Sponsorships;
 select * from Games;
 
 */
+
+SELECT * FROM Games;
