@@ -221,12 +221,12 @@ def post_scoutingreport():
     req_data = request.get_json()
     current_app.logger.info(req_data)
 
-    gameID = req_data['gameID']
+    gameID = req_data['new_gameID']
     DRTG = req_data['DRTG']
     ORTG = req_data['ORTG']
-    play_1 = req_data['play_1']
-    play_2 = req_data['play_2']
-    play_3 = req_data['play_3']
+    play_1 = req_data['play1']
+    play_2 = req_data['play2']
+    play_3 = req_data['play3']
 
     # construct insert statement
     insert_stmt = 'INSERT INTO ScoutingReports VALUES ('
@@ -239,3 +239,28 @@ def post_scoutingreport():
     cursor.execute(insert_stmt)
     db.get_db().commit()
     return 'Success!'
+
+@coaches.route('/noscoutingreport', methods = ['GET'])
+def get_no_scoutingreport():
+    # get a cursor object from the database
+   cursor = db.get_db().cursor()
+    
+   # use cursor to query the database for a list of products
+   cursor.execute('select Games.gameID FROM Games LEFT JOIN ScoutingReports on Games.gameID = ScoutingReports.gameID WHERE ScoutingReports.gameID IS NULL')
+
+   # grab the column headers from the returned data
+   column_headers = [x[0] for x in cursor.description]
+
+   # create an empty dictionary object to use in 
+   # putting column headers together with data
+   json_data = []
+
+   # fetch all the data from the cursor
+   theData = cursor.fetchall()
+
+   # for each of the rows, zip the data elements together with
+   # the column headers. 
+   for row in theData:
+       json_data.append(dict(zip(column_headers, row)))
+
+   return jsonify(json_data)
