@@ -628,7 +628,8 @@
         "headers": [],
         "params": [],
         "tests": []
-      }{
+      },
+      {
         "_id": "fb0081aa-cab0-4251-b799-83778b7a2e1f",
         "colId": "history",
         "containerId": "",
